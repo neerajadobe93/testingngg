@@ -1,12 +1,32 @@
+name: Copy Files Workflow
+
 on:
-   workflow_dispatch:
+  workflow_dispatch:
+    inputs:
+      source_repo:
+        description: 'Source Repository (format: owner/repo)'
+        required: true
+      source_path:
+        description: 'File/Directory Path to Copy from Source Repo'
+        required: true
+      source_pat:
+        description: 'PAT for Source Repo (if private, leave blank if public)'
+        required: false
+      pat:
+        description: 'PAT for operations, defaults to using GITHUB_TOKEN'
+        required: false
+
 jobs:
-  your-job-name:
+  copy-files:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Copy Files/Folders within Current Repository
-      uses: neerajadobe93/actions@v0.0.1
+      - name: Copy Files/Folders within Current Repository
+        uses: neerajadobe93/actions@v0.0.1
+        with:
+          source_repo: ${{ github.event.inputs.source_repo }}
+          source_path: ${{ github.event.inputs.source_path }}
+          source_pat: ${{ github.event.inputs.source_pat }}
+          pat: ${{ github.event.inputs.pat }}
