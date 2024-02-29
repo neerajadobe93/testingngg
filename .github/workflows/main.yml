@@ -1,2 +1,12 @@
-- name: Copy Files/Folders within Current Repository
-  uses: neerajadobe93/actions@v0.0.1
+on:
+   workflow_dispatch:
+jobs:
+  your-job-name:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Copy Files/Folders within Current Repository
+      uses: neerajadobe93/actions@v0.0.1
