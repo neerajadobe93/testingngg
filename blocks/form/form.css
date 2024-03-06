@@ -1,461 +1,506 @@
 :root {
-  --form-font-size-m: 22px;
-  --form-font-size-s: 18px;
-  --form-font-size-xs: 16px;
-  --form-background-color: var(--mt-background-color-primary);
-  --form-padding: 3%;
-  --form-columns: 1;
-  --form-field-gap: 20px 0 0 0;
-  --form-invalid-border-color: var(--mt-global-color-orange);
-  --form-input-padding: 0.75rem 0.6rem;
-  --form-input-font-size: var(--mt-font-size-100);
-  --form-input-disable-color: var(--mt-global-color-silver);
-  --form-input-border-size: 1px;
-  --form-input-border-color: var(--mt-global-color-oslo-gray);
-  --form-input-background-color: var(--mt-background-color-primary);
-  --form-paragraph-color: var(--mt-global-color-dove-gray);
-  --form-paragraph-margin: 0 0 0.9rem;
-  --form-paragraph-font-style: none;
-  --form-paragraph-font-size: var(--form-font-size-xs);
-  --form-label-color: var(--mt-global-color-dove-gray);
-  --form-label-font-size: var(--form-font-size-xs);
-  --form-label-font-weight: bold;
-  --form-fieldset-border: 0;
-  --form-fieldset-marign: 0;
-  --form-fieldset-legend-color: var(--form-label-color);
-  --form-fieldset-legend-font-size: var(--form-label-font-size);
-  --form-fieldset-legend-font-weight: var(--form-label-font-weight);
-  --form-fieldset-legend-border: none;
-  --form-fieldset-legend-padding: 0;
-  --form-button-color: var(--mt-background-color-primary);
-  --form-button-font-size: var(--form-font-size-s);
-  --form-button-background-color: var(--mt-global-color-accent-primary);
-  --form-button-background-hover-color: var(--mt-global-color-blue-ribbon);
-  --form-button-border: 2px solid transparent;
-  --form-button-padding: 15px 50px;
-  --form-upload-color: var(--mt-background-color-primary);
-  --form-upload-font-size: var(--form-font-size-xs);
-  --form-upload-background-color: var(--mt-global-color-base-primary);
-  --form-submit-width: 100%;
+    --background-color-primary: #fff;
+    --label-color: #666;
+    --border-color: #cdd1d6;
+    --form-error-color: #E1242A;
+    --button-primary-color: #5F8DDA;
+    --button-secondary-color: #666;
+    --button-primary-hover-color: #035fe6;
+    --form-font-size-m: 22px;
+    --form-font-size-s: 18px;
+    --form-font-size-xs: 16px;
+    --form-background-color: var(--background-color-primary);
+    --form-padding: 8px 0;
+    --form-margin: 0;
+    --form-columns: 12;
+    --form-field-horz-gap: 40px;
+    --form-field-vert-gap: 20px;
+    --form-invalid-border-color: #ff5f3f;
+    --form-input-padding: 0.75rem 0.6rem;
+    --form-input-font-size: 1rem;
+    --form-input-disable-color: #ebebe4;
+    --form-input-border-size: 1px;
+    --form-input-border-color: var(--border-color);
+    --form-input-background-color: var(--background-color-primary);
+    --form-paragraph-color: var(--label-color);
+    --form-paragraph-margin: 0 0 0.9rem;
+    --form-paragraph-font-style: none;
+    --form-paragraph-font-size: var(--form-font-size-s);
+    --form-label-color: var(--label-color);
+    --form-label-font-size: var(--form-font-size-xs);
+    --form-label-font-weight: 500;
+    --form-title-font-weight: 600;
+    --form-fieldset-border: 0;
+    --form-fieldset-marign: 0;
+    --form-fieldset-legend-color: var(--form-label-color);
+    --form-fieldset-legend-font-size: var(--form-label-font-size);
+    --form-fieldset-legend-font-weight: var(--form-title-font-weight);
+    --form-fieldset-legend-border: none;
+    --form-fieldset-legend-padding: 0  0 16px;
+    --form-button-color: var(--background-color-primary);
+    --form-button-font-size: var(--form-font-size-m);
+    --form-button-background-color: var(--button-primary-color);
+    --form-button-background-hover-color: var(--button-primary-hover-color);
+    --form-button-border: 2px solid transparent;
+    --form-button-padding: 8px 45px;
+    --form-upload-color: var(--background-color-primary);
+    --form-upload-font-size: var(--form-font-size-xs);
+    --form-upload-background-color: var(--background-color-primary);
+    --form-submit-width: 100%;
+    --form-width: 80%;
+    --form-wizard-background-color: #f2f2f2;
+    --form-wizard-border-color: #757575;
+    --form-wizard-number-color: var(--button-primary-color);
+    --form-max-width: 1200px;
+    --form-grid-gap: 0 30px;
+    --form-field-gap: 8px 0;
+}
+
+form {
+    font-family: var(--font-family-gotham);
+}
+
+form output {
+    display: block;
+    font-weight: 700;
+    font-size: 1.625rem;
+}
+
+form [data-visible="false"] {
+    display: none !important;
 }
 
 main .form-container {
-  background-color: var(--mt-background-color-primary);
-  padding: var(--form-padding);
+    background-color: var(--form-background-color);
+    padding: var(--form-padding);
+    width: var(--form-width);
+    margin: var(--form-margin) auto;
 }
 
 main .form {
-  background-color: var(--form-background-color);
+    background-color: var(--form-background-color);
 }
 
+main .form .form-wrapper {
+    padding: var(--form-padding);
+}
+
+main .form>div:not(:first-child) {
+    display: none;
+}
+
+main .form form {
+    display: grid;
+    grid-template-columns: repeat(var(--form-columns), minmax(0, 1fr));
+    gap: var(--form-grid-gap);
+    padding: var(--form-padding);
+    max-width: var(--form-max-width);
+}
 
 main .form form fieldset {
-  border: var(--form-fieldset-border);
-  margin: var(--form-fieldset-marign);
-  width: 100%;
+    display: grid;
+    align-content: flex-start;
+    gap: var(--form-fieldset-grid-gap);
+    grid-template-columns: repeat(var(--form-fieldset-columns), minmax(0, 1fr));
+    border: var(--form-fieldset-border);
+    margin: var(--form-fieldset-margin);
+    padding: var(--form-fieldset-padding);
 }
 
 main .form form fieldset fieldset {
-  padding: 0;
+    padding: 0;
+}
+
+main .form form .field-wrapper {
+    grid-column: span 12;
 }
 
 main .form .field-description {
-  color: var(--form-label-color);
-  font-size: var(--form-font-size-xs);
+    color: var(--form-label-color);
+    font-size: var(--form-font-size-xs);
 }
 
-main .form :is(input, textarea, select) {
-  background-color: var(--form-input-background-color);
-
-  width: calc(100% - 16px);
-  height: 42px;
-  color: var(--form-label-color);
-  padding: var(--form-input-padding);
-  margin: 10px 0 0;
-  font-size: var(--form-input-font-size);
-  max-width: unset;
+main .form form .field-invalid {
+    color: var(--form-error-color);
+    font-size: var(--body-font-size-s);
+    font-weight: normal;
 }
 
-main .form input[type="file"] {
-  border: none;
+main .form input,
+main .form textarea,
+main .form select {
+    background-color: var(--form-input-background-color);
+    border: var(--form-input-border-size) solid var(--form-input-border-color);
+    width: 100%;
+    height: 42px;
+    color: var(--form-label-color);
+    padding: var(--form-input-padding);
+    font-size: var(--form-input-font-size);
+    max-width: unset;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.125rem;
 }
 
-main .form input[type="checkbox"],
-main .form input[type="radio"] {
-  width: 16px;
-  height: 16px;
-  margin: 0 0 0 8px;
-  flex: none;
+main .form input.error,
+main .form textarea.error,
+main .form select.error {
+    border: 1px solid #FF3B3B;
+    background: #FFE4E4 0% 0% no-repeat padding-box;
+    margin-bottom: 8px;
+}
+
+main .form input[type='file'] {
+    border: none;
+    padding-inline-start: 0;
+}
+
+main .form input[type='checkbox'],
+main .form input[type='radio'] {
+    width: 22px;
+    height: 22px;
+    flex: none;
+    margin: 2px 10px;
+    position: static;
+    z-index: 1;
+    transform: scale(1.5);
+    accent-color: var(--brand-primary);
 }
 
 main .form textarea {
-  min-height: 100px;
+    min-height: 100px;
 }
 
-main .form :is(input:hover, select:hover) {
-  border-color: rgb(90 92 96);
+main .form input:hover,
+main .form select:hover {
+    border-color: rgb(90 92 96);
 }
 
 main .form fieldset legend {
-  font-weight: var(--form-fieldset-legend-font-weight);
-  font-size: var(--form-fieldset-legend-font-size);
-  color: var(--form-fieldset-legend-color);
-  border-bottom: var(--form-fieldset-legend-border);
-  width: 100%;
-  padding: var(--form-fieldset-legend-padding);
-}
-
-main .innovate form > fieldset > legend {
-  text-align: center;
-}
-
-main .form fieldset legend:has(div.form-radio-wrapper) {
-  border-bottom: 0;
+    font-weight: var(--form-fieldset-legend-font-weight);
+    font-size: var(--form-fieldset-legend-font-size);
+    color: var(--form-fieldset-legend-color);
+    border-bottom: var(--form-fieldset-legend-border);
+    width: 100%;
+    padding: var(--form-fieldset-legend-padding);
 }
 
 main .form label {
-  font-weight: var(--form-label-font-weight);
-  font-size: var(--form-label-font-size);
-  color: var(--form-label-color);
-  margin: 1rem 0;
+    font-weight: var(--form-label-font-weight);
+    font-size: var(--form-label-font-size);
+    color: var(--form-label-color);
 }
 
 main .form label.required::after {
-  content: "*";
-  color: var(--form-label-color);
-  padding-left: 5px;
+    content: "*";
+    color: var(--form-label-color);
+    padding-inline-start: 5px;
 }
 
 main .form form p,
 main .form form .field-wrapper {
-  margin: var(--form-field-gap);
-  color: var(--form-label-color);
+    margin: var(--form-field-gap);
+    color: var(--form-label-color);
+    flex: 1 0 calc(100%/var(--form-columns) - var(--form-field-horz-gap));
+    margin-bottom: 24px;
 }
 
 main .form form p {
-  font-size: var(--form-paragraph-font-size);
-  font-style: var(--form-paragraph-font-style);
-  color: var(--form-paragraph-color);
-  margin: var(--form-paragraph-margin);
+    font-size: var(--form-paragraph-font-size);
+    font-style: var(--form-paragraph-font-style);
+    color: var(--form-paragraph-color);
+    margin: var(--form-paragraph-margin);
 }
 
-main
-  .form
-  form
-  fieldset
-  > :is(
-    .form-radio-wrapper:first-of-type,
-    .form-checkbox-wrapper:first-of-type
-  ) {
-  margin: var(--form-field-gap);
+main .form form .form-checkbox-wrapper,
+main .form form .form-radio-wrapper {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    gap: 8px;
 }
 
-main .form form :is(.form-checkbox-wrapper, .form-radio-wrapper) {
-  display: flex;
-  align-items: baseline;
-  margin: 0;
+main .form form fieldset>.form-radio-wrapper,
+main .form form fieldset>.form-checkbox-wrapper {
+    margin: var(--form-field-gap);
 }
 
 main .form .form-radio-wrapper label,
 main .form .form-checkbox-wrapper label {
-  font-weight: var(--mt-font-weight-regular);
-  margin: 0 0 0.3em 0.3em;
+    flex-basis: calc(100% - 28px);
 }
 
 input::file-selector-button {
-  color: var(--form-upload-color);
-  background: var(--form-upload-background-color);
-  font-size: var(--form-upload-font-size);
-  text-align: center;
+    color: var(--form-upload-color);
+    background: var(--form-upload-background-color);
+    font-size: var(--form-upload-font-size);
+    text-align: center;
 }
 
 main .form button {
-  color: var(--form-button-color);
-  background: palevioletred;
-  border: var(--form-button-border);
-  padding: var(--form-button-padding);
-  font-size: var(--form-button-font-size);
-  font-weight: var(--mt-font-weight-bold);
-  border-radius: unset;
+    color: var(--white);
+    background: var(--brand-primary);
+    border: var(--form-button-border);
+    padding: var(--form-button-padding);
+    font-size: var(--form-button-font-size);
+    border-bottom-left-radius:20px;
+    width: 100%;
 }
 
-main .form button:hover {
-  background: var(--form-button-background-hover-color);
+main form .form-file-wrapper>button {
+    display: flex;
 }
 
 main .form-submit-wrapper {
-  width: var(--form-submit-width);
+    width: var(--form-submit-width);
+    text-align: center;
 }
 
-main
-  .form
-  :is(input:disabled, textarea:disabled, select:disabled, button:disabled) {
-  background-color: var(--form-input-disable-color);
+main .form input:disabled,
+main .form textarea:disabled,
+main .form select:disabled,
+main .form button:disabled {
+    background-color: var(--form-input-disable-color);
 }
 
-.technical-inquiry {
-  --form-fieldset-legend-font-size: var(--mt-font-size-175);
-  --form-fieldset-legend-font-weight: var(--mt-font-weight-regular);
-  --form-fieldset-legend-border: 1px solid rgb(0 0 0 / 10%);
-  --form-fieldset-legend-color: var(--mt-global-color-base-primary);
-  --form-fieldset-legend-padding: 0px 0px 20px 0px;
+main .form-file-wrapper input[type="file"] {
+    display: none;
 }
 
-.innovate,
-.study-request {
-  --form-fieldset-legend-font-size: var(--mt-font-size-150);
-  --form-fieldset-legend-font-weight: var(--mt-font-weight-bold);
-  --form-fieldset-legend-border: 2px dashed var(--mt-background-color-primary);
-  --form-background-color: var(--mt-global-color-base-primary);
-  --form-label-color: var(--mt-background-color-primary);
-  --form-paragraph-color: var(--mt-background-color-primary);
-  --form-fieldset-legend-color: var(--mt-background-color-primary);
-  --form-fieldset-legend-padding: 1em 0;
+main .form-file-wrapper .field-dropregion {
+    background: rgb(0 0 0 / 2%);
+    border: 1px dashed var(--form-input-border-color);
+    border-radius: 4px;
+    margin: 11px 0 8px;
+    padding: 32px;
+    text-align: center;
 }
 
-.innovate {
-  --form-fieldset-legend-border: 1px solid gray;
-  --form-fieldset-legend-font-size: var(--mt-font-size-215);
-  --form-fieldset-legend-font-weight: var(--mt-font-weight-boldest);
-}
+main .form-file-wrapper .file-description button {
+    --form-button-padding: 15px;
 
-main .innovate form fieldset fieldset,
-main .study-request form fieldset fieldset {
-  --form-fieldset-legend-color: var(--form-label-color);
-  --form-fieldset-legend-font-size: var(--form-label-font-size);
-  --form-fieldset-legend-font-weight: var(--form-label-font-weight);
-  --form-fieldset-legend-border: none;
-  --form-fieldset-legend-padding: 0;
-}
-
-.form-contacttitle {
-  font-weight: var(--mt-font-weight-bold);
-}
-
-.study-request .form-firstname,
-.study-request .form-lastname {
-  --form-field-gap: 0;
-}
-
-.study-request :is(.form-information, .form-authorize, .form-terms) {
-  padding: 20px;
-  max-width: 500px;
-  display: block;
-  margin: 0 auto;
-  text-align: center;
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
-
-main .study-request input[type="file"] {
-  background: rgb(var(--mt-global-color-black) / 2%);
-  border: 1px dashed var(--mt-global-color-silver);
-  border-radius: 4px;
-  margin-bottom: 8px;
-  padding: 32px;
-  text-align: center;
-}
-
-main .innovate form,
-main .study-request form,
-main .technical-inquiry form {
-  display: flex;
-  flex-direction: column;
-}
-
-.contact,
-.schedule-demo {
-  --form-paragraph-color: var(--mt-global-color-black);
-  --form-label-color: var(--mt-global-color-black);
-  --form-input-background-color: var(--mt-global-color-alabaste);
-  --form-input-border-size: 1px;
-  --form-input-border-color: var(--mt-global-color-gallery);
-}
-
-main .form form .form-message,
-.form-consent {
-  font-size: var(--mt-font-size-90);
-  border-bottom: solid 2px var(--mt-global-color-gallery);
-}
-
-main .form form .form-message {
-  font-size: var(--mt-font-size-130);
-  font-weight: var(--mt-font-weight-bold);
-  padding: 4%;
-}
-
-.study-request .form-textarea-wrapper textarea {
-  height: 288px;
-}
-
-.form-submission-fs,
-.form-enrollment-fs,
-.form-enrollment-end-fs,
-.form-final-data-fs {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-
-.form-submissionmonth,
-.form-submissionday,
-.form-submissionyear,
-.form-enrollmentmonth,
-.form-enrollmentday,
-.form-enrollmentyear,
-.form-enrollmentendmonth,
-.form-enrollmentendday,
-.form-enrollmentendyear,
-.form-finaldatamonth,
-.form-finaldataday,
-.form-finaldatayear {
-  --form-field-gap: 0;
-
-  width: min-content;
-}
-
-#submissionmonth,
-#submissionday,
-#submissionyear,
-#enrollmentmonth,
-#enrollmentday,
-#enrollmentyear,
-#enrollmentendmonth,
-#enrollmentendday,
-#enrollmentendyear,
-#finaldatamonth,
-#finaldataday,
-#finaldatayear {
-  min-width: 84px;
-  width: 100%;
-  margin: 0;
-}
-
-.innovate .form-submit-wrapper .button,
-.study-request .form-submit-wrapper .button,
-.contact .form-submit-wrapper .button,
-.schedule-demo .form-submit-wrapper .button,
-.technical-inquiry .form-submit-wrapper .button {
-  width: calc(100% - 16px);
-}
-
-@media (min-width: 576px) {
-  .form-container {
-    max-width: 540px;
-  }
-}
-
-@media (min-width: 768px) {
-  .form-container {
-    max-width: 740px;
-    margin: 0 auto 10px;
-  }
-
-  form {
+    background: url('./icons/delete.svg') no-repeat;
     width: unset;
-    flex-flow: wrap row;
-  }
+    border: unset;
+    text-align: center;
 }
 
-@media (min-width: 1200px), (min-width: 992px) {
-  :root {
-    --form-columns: 2;
-  }
+/** Wizard Styling */
 
-  .form-firstname,
-  .form-lastname,
-  .form-country,
-  .form-postalcode,
-  .form-phone,
-  .form-email,
-  .form-preferred-day-fs,
-  .form-preferred-time-fs,
-  .form-product-fs,
-  .form-solution-fs {
-    grid-column: span calc(var(--form-columns) / 2);
-  }
+main .wizard {
+    counter-reset: wizard-step-counter;
+}
 
-  .form-contact-type-fs,
-  .form-company,
-  .form-description,
-  .form-message,
-  .form-consent,
-  .form-submit-wrapper {
-    grid-column: span 4;
-  }
+main .wizard fieldset legend {
+    font-weight: normal;
+}
 
-  .form-email-opt-fs {
-    grid-column-start: 1;
-  }
+main .form form .wizard>fieldset {
+    counter-increment: wizard-step-counter;
+}
 
-  main .innovate,
-  main .study-request {
-    max-width: 1060px;
+main .wizard> :not(.current-wizard-step) {
+    display: none;
+}
+
+main .wizard>.current-wizard-step>legend {
+    font-weight: 600;
+}
+
+main .wizard .form-wizard-button-wrapper {
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+    padding-right: 30px;
+
+}
+
+main .wizard .form-wizard-button-wrapper .form-button-wrapper {
+    flex: none;
+}
+
+main .wizard .form-wizard-button-wrapper button {
+    border: 3px solid var(--button-secondary-color);
+    background-color: transparent;
+    color: var(--button-secondary-color);
+    text-align: center;
+}
+
+main .wizard .form-submit-wrapper,
+main .wizard .form-wizard-button-skip,
+main .wizard>.current-wizard-step.form-panel-wrapper:first-of-type~.form-wizard-button-wrapper>.form-wizard-button-prev,
+main .wizard>.current-wizard-step.form-panel-wrapper:last-of-type~.form-wizard-button-wrapper>.form-wizard-button-next {
+    display: none;
+}
+
+main .wizard .current-wizard-step.field-wrapper:last-of-type~.form-wizard-button-wrapper>.form-submit-wrapper {
+    display: inline-block;
+}
+
+@media (width >=600px) {
+    main .form button {
+        width: unset;
+    }
+}
+
+@media(width >=992px) {
+    main .wizard.left {
+        --wizard-left-titlebar-width: 360px;
+        --wizard-left-form-padding: 30px;
+        --wizard-left-titlebar-padding: var(--wizard-left-form-padding);
+        --wizard-left-form-padding-bottom: 160px;
+        --form-columns: 1;
+        --fieldset-coulmns: 1;
+
+        display: grid;
+        grid-template-columns: repeat(var(--form-columns), minmax(0, 1fr));
+        border: 2px solid var(--form-wizard-border-color);
+        background-color: var(--form-wizard-background-color);
+        gap: unset;
+    }
+
+    /* wizard title on left */
+    main .wizard.left .current-wizard-step {
+        display: grid;
+        grid-template-columns: repeat(var(--fieldset-coulmns), minmax(0, 1fr));
+        border-left: 2px solid var(--form-wizard-border-color);
+        margin-left: var(--wizard-left-titlebar-width);
+        background-color: var(--background-color-primary);
+        padding: var(--wizard-left-form-padding);
+        padding-bottom: var(--wizard-left-form-padding-bottom);
+    }
+
+    main .wizard.left>fieldset {
+        width: unset;
+    }
+
+    main .wizard.left>fieldset:not(.current-wizard-step) {
+        position: absolute;
+        display: unset;
+    }
+
+    main .wizard.left>fieldset:not(.current-wizard-step)> :not(legend) {
+        display: none;
+    }
+
+    main .wizard.left>fieldset>legend::before {
+        content: counter(wizard-step-counter);
+        display: inline-block;
+        border: 2px solid var(--form-wizard-number-color);
+        color: var(--form-wizard-number-color);
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        margin-right: 10px;
+        text-align: center;
+        line-height: 2;
+    }
+
+    main .wizard.left>fieldset>legend {
+        display: block !important;
+        position: absolute;
+        font-size: 1.2rem;
+        margin-top: calc(var(--wizard-step-index) * 85px);
+        width: var(--wizard-left-titlebar-width);
+        padding: var(--wizard-left-titlebar-padding) var(--wizard-left-titlebar-padding) 0;
+        margin-bottom: 0;
+    }
+
+    main .wizard.left>.current-wizard-step>legend {
+        margin-left: calc(-1*var(--wizard-left-titlebar-width) - var(--wizard-left-form-padding));
+        margin-top: calc((var(--wizard-step-index) * 85px) - var(--wizard-left-titlebar-padding));
+    }
+
+    main .wizard.left>.current-wizard-step>legend::before {
+        background-color: var(--form-wizard-number-color);
+        color: var(--background-color-primary);
+    }
+
+    main .wizard.left .form-wizard-button-wrapper {
+        margin-top: -160px;
+        margin-left: var(--wizard-left-titlebar-width);
+    }
+
+    main .form form .field-wrapper.col-11 {
+        grid-column: span 11;
+    }
+
+    main .form form .field-wrapper.col-10 {
+        grid-column: span 10;
+    }
+
+    main .form form .field-wrapper.col-9 {
+        grid-column: span 9;
+    }
+
+    main .form form .field-wrapper.col-8 {
+        grid-column: span 8;
+    }
+
+    main .form form .field-wrapper.col-7 {
+        grid-column: span 7;
+    }
+
+    main .form form .field-wrapper.col-6 {
+        grid-column: span 6;
+    }
+
+    main .form form .field-wrapper.col-5 {
+        grid-column: span 5;
+    }
+
+    main .form form .field-wrapper.col-4 {
+        grid-column: span 4;
+    }
+
+    main .form form .field-wrapper.col-3 {
+        grid-column: span 3;
+    }
+
+    main .form form .field-wrapper.col-2 {
+        grid-column: span 2;
+    }
+
+    main .form form .field-wrapper.col-1 {
+        grid-column: span 1;
+    }
+}
+
+@media (width >=1200px) {
+    main .wizard.left {
+        --fieldset-coulmns: 1;
+    }
+
+    main .form form .form-checkbox-wrapper,
+    main .form form .form-textarea-wrapper,
+    main .form form .form-file-wrapper,
+    main .form form .form-panel-wrapper {
+        flex: 1 0 100%;
+    }
+
+    main .form form .form-panel-wrapper {
+        flex-flow: row wrap;
+        gap: 10px 15px;
+        padding-bottom: 24px;
+
+    }
+}
+
+main form .form-panel-wrapper {
+    display: flex;
     padding: 0;
-  }
+    flex-direction: column;
+    padding-bottom: 24px;
+}
 
-  main .innovate form,
-  main .study-request form {
-    max-width: 800px;
-    margin: 0 auto;
-  }
+main .form .form-message.success-message {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
 
-  .innovate .form-personal-info {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .innovate .form-email {
-    grid-column: span 2;
-  }
-
-  .innovate .form-company {
-    grid-column: span 1;
-  }
-
-  .technical-inquiry .form-contact-details-fs {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .technical-inquiry .form-country {
-    grid-column: span 2;
-  }
-
-  .contact,
-  .schedule-demo {
-    --form-columns: 4;
-  }
-
-  .contact .form-product-fs {
-    grid-column: span 1;
-  }
-
-  .study-request .form-pi-and-contact-fs,
-  .study-request .form-study-fs,
-  .form-statistical-fs,
-  .form-budget-fs,
-  .form-milestones-fs,
-  .form-document-fs {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .study-request .form-pi-and-contact-fs,
-  .study-request .form-institutionaddress,
-  .form-contacttitle,
-  .form-studytitle,
-  .form-product,
-  .form-background,
-  .form-statistical,
-  #milestones-fs-description,
-  #document-fs-description {
-    grid-column: span 2;
-  }
-
-  main .innovate form .form-ack-fs {
-    padding: 0 15% 5px;
-    border-radius: 3px;
-    margin-top: 36px 0;
-  }
+main .form .form-message.error-message {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
 }
